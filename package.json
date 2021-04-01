@@ -1,0 +1,19 @@
+{
+  "name": "loginapp",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dadler89/loginApp.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dadler89/loginApp/issues"
+  },
+  "homepage": "https://github.com/dadler89/loginApp#readme"
+}

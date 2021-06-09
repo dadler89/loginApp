@@ -7,7 +7,7 @@ const mongoose = require("mongoose");
 const session = require("express-session");
 const passport = require("passport");
 const passportLocalMongoose = require("passport-local-mongoose");
-const GoogleStrategy = require("passport-google-oauth20")
+const GoogleStrategy = require("passport-google-oauth20").Strategy;
 
 
 const app = express();
@@ -59,7 +59,17 @@ passport.use(User.createStrategy());
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
-
+passport.user(new GoogleStrategy({
+  clientID: GOOGLE_CLIENT_ID,
+  clientSecret: GOOGLE_CLIENT_SECRET,
+  callbackURL: "http://www.example.com/auth/google/callback"
+},
+  function (accessTocken, refreshToken, profile, cb) {
+    User.findOrCreate({ googleID: profile.id }, fucntion(err, user){
+      return cb(err, user);
+    })
+  }
+));
 
 
 app.get("/", function (req, res) {
